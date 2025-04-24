@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id          Int        @id @default(autoincrement())
+  name        String     @db.VarChar(50)
+  email       String     @unique @db.VarChar(60)
+  password    String     @db.VarChar(60)
+  phoneNumber String     @db.VarChar(20)
+  role        role
+  deletedAt   DateTime?
+  userTrip    userTrip[]
+
+  @@map("users")
+}
+
+model trip {
+  id                     Int        @id @default(autoincrement())
+  tanggalMulaiPerjalanan DateTime   @db.Timestamptz()
+  tanggalAkhirPerjalanan DateTime   @db.Timestamptz()
+  destinasiPerjalanan    String     @db.VarChar(50)
+  deletedAt              DateTime?
+  userTrip               userTrip[]
+
+  @@map("trips")
+}
+
+model userTrip {
+  id     Int   @id @default(autoincrement())
+  userId Int
+  users  user? @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  tripId Int
+  trips  trip? @relation(fields: [tripId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@map("user_trips")
+}
+
+enum role {
+  SUPERADMIN
+  ADMIN
+  USER
+}
