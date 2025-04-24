@@ -67,8 +67,8 @@ npm run start:dev
 
 ## 📚 Dokumentasi API (Swagger)
 
-Setelah server berjalan, kamu bisa akses Swagger UI di:
-👉 [http://localhost:3000/api](http://localhost:3000/api)
+Setelah server berjalan, kamu bisa akses Swagger UI di:\
+👉 [http://localhost:3000/api](http://localhost:3000/api)\
 Swagger menampilkan dokumentasi lengkap endpoint-endpoint yang tersedia.
 
 ## 📚 Useful Commands
