@@ -34,7 +34,7 @@ DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/DBNAME?schema=public"
 JWT_SECRET="709589faec34e3c7fd976b79fecfaeabaaa0ea7e2ab5ee518c9c3asdbccf8151c6b"
 ```
 
-2. **Jika menggunakan DB selain PostgreSQL bisa ubah bagian provider**
+2. **Jika menggunakan DB selain PostgreSQL bisa ubah bagian provider (Optional)**
 
 Contoh isi `prisma/schema.prisma`:
 
