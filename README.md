@@ -65,6 +65,12 @@ npx prisma migrate dev --name init
 npm run start:dev
 ```
 
+## 📚 Dokumentasi API (Swagger)
+
+Setelah server berjalan, kamu bisa akses Swagger UI di:
+👉 [http://localhost:3000/api](http://localhost:3000/api)
+Swagger menampilkan dokumentasi lengkap endpoint-endpoint yang tersedia.
+
 ## 📚 Useful Commands
 
 | Command                             | Keterangan                             |
@@ -76,12 +82,29 @@ npm run start:dev
 ## 📁 Struktur Direktori (Singkat)
 
 ```
-src/
+.
+├── prisma/                  # Folder untuk Prisma schema dan konfigurasi
+│   └── schema.prisma        # Skema database Prisma
 │
-├── app/                # Module, controller, service
-├── prisma/             # Prisma service integration
-├── main.ts             # Entry point
-└── app.module.ts       # Root module
+├── src/                     # Folder utama source code aplikasi
+│   ├── app/                 # Folder utama aplikasi
+│   │   ├── decorators/      # Custom decorators (misalnya: @Roles)
+│   │   ├── enums/           # Enum global (misalnya RolesEnum)
+│   │   ├── guards/          # Auth dan role-based guards
+│   │   ├── modules/         # Modul fitur
+│   │   │   ├── auth/        # Modul otentikasi
+│   │   │   ├── prisma/      # Modul PrismaService (dependency injection)
+│   │   │   ├── trip/        # Modul fitur trip
+│   │   │   ├── user/        # Modul fitur user
+│   │   │   └── user_trip/   # Modul relasi user-trip
+│   │   ├── app.controller.ts       # Controller utama
+│   │   ├── app.controller.spec.ts  # Unit test untuk controller
+│   │   ├── app.service.ts          # Service utama (opsional)
+│   │   └── app.module.ts           # Root module
+│
+│   └── main.ts              # Entry point aplikasi (bootstrap NestJS)
+│
+└── test/                    # Folder untuk testing
 ```
 
 ## Description
