@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDateString } from 'class-validator';
+import { IsDateString, IsString } from 'class-validator';
 
 export class CreateTripDto {
   id?: number;
@@ -33,6 +33,6 @@ export class CreateTripDto {
     minLength: 3,
     maxLength: 50,
   })
-  @IsDateString()
+  @IsString()
   destinasiPerjalanan: string;
 }
