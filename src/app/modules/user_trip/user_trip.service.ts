@@ -23,7 +23,7 @@ export class UserTripService {
     const trips = await this.prisma.userTrip
       .findMany({
         where: {
-          userId: userId, // Filter by userId
+          userId: Number(userId), // Filter by userId
           trips: {
             AND: [
               findUserTripDto.tanggalMulaiPerjalanan
