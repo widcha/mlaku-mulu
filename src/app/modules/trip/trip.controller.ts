@@ -15,7 +15,6 @@ import {
   ApiBearerAuth,
   ApiBody,
   ApiOperation,
-  ApiQuery,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
@@ -64,7 +63,6 @@ export class TripController {
     status: 400,
     description: 'Bad request, validation errors.',
   })
-  @ApiQuery({ type: FindTripDto })
   async findTrips(@Query() findTripDto: FindTripDto) {
     return await this.tripService.findTrips(findTripDto);
   }
